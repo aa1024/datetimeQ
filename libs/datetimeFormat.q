@@ -24,34 +24,35 @@ split:"/ -,";      /# @bullet Currently supports these 4 separators : "/" , " ",
 /Years as 1900-9999                          yyyy
 
 m:{string`int$`mm$x}
-m[.z.d]
+/# @code m[.z.d]
 
 mm:{string`mm$x}
-mm[.z.d]
+/# @code mm[.z.d]
 
 mmm:{3#mmmm[x]}
-mmm[.z.d]
+/# @code mmm[.z.d]
 
 mmmm:{monthMap[`mm$x]}
-mmmm[.z.d]
+/# @code mmmm[.z.d]
 
 mmmmm:{1#mmmm[x]}
-mmmmm[.z.d]
+/# @code mmmmm[.z.d]
 
 
 d:{string`int$`dd$x}
-d[.z.d-10]
+/# @code d[.z.d-10]
 
 dd:{string`dd$x}
-dd[.z.d]
+/# @code dd[.z.d]
 
 dddd:{days@mod[system["W"]+x-`week$x;7]}
-/system"W 4"; dddd[2018.06.14]; system"W 2"
-/system"W 0"; dddd[2018.06.14]; system"W 2"
+/# @code system"W 4"; dddd[2018.06.14]; system"W 2"
+/# @code system"W 0"; dddd[2018.06.14]; system"W 2"
 
 ddd:{3#days@mod[system["W"]+x-`week$x;7]}
-/system"W 4"; ddd[2018.06.14]; system"W 2"
-/system"W 0"; ddd[2018.06.14]; system"W 2"
+/# @code system"W 4"; ddd[2018.06.14]; system"W 2"
+/# @code system"W 0"; ddd[2018.06.14]; system"W 2"
+
 
 /format:"dd/m/yyyy"
 /tokens:cut[where differ format;format]
