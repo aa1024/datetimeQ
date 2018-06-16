@@ -23,5 +23,26 @@ split:"/ -,";      /# @bullet Currently supports these 4 separators : "/" , " ",
 /Years as 00-99                              yy
 /Years as 1900-9999                          yyyy
 
+m:{string`int$`mm$x}
+m[.z.d]
+
+mm:{string`mm$x}
+mm[.z.d]
+
+mmm:{3#mmmm[x]}
+mmm[.z.d]
+
+mmmm:{monthsMap[`mm$x]}
+mmmm[.z.d]
+
+mmmmm:{1#mmmm[x]}
+mmmmm[.z.d]
+
+/x:.z.d
+
+
+format:"dd/m/yyyy"
+tokens:cut[where differ format;format]
+
 
 
