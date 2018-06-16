@@ -24,40 +24,40 @@ split:"/ -,";      /# @bullet Currently supports these 4 separators : "/" , " ",
 /Years as 1900-9999                          yyyy
 
 m:{string`int$`mm$x}
-/# @code m[.z.d]
+/# @code m[2018.06.08]
 
-mm:{string`mm$x}
-/# @code mm[.z.d]
+mm:{"0"^-2$string`mm$x}
+/# @code mm[2018.06.08]
 
 mmm:{3#mmmm[x]}
-/# @code mmm[.z.d]
+/# @code mmm[2018.06.08]
 
 mmmm:{monthMap[`mm$x]}
-/# @code mmmm[.z.d]
+/# @code mmmm[2018.06.08]
 
 mmmmm:{1#mmmm[x]}
-/# @code mmmmm[.z.d]
+/# @code mmmmm[2018.06.08]
 
 
 d:{string`int$`dd$x}
-/# @code d[.z.d-10]
+/# @code d[2018.06.08]
 
-dd:{string`dd$x}
-/# @code dd[.z.d]
+dd:{"0"^-2$string`dd$x}
+/# @code dd[2018.06.08]
 
 dddd:{days@mod[system["W"]+x-`week$x;7]}
-/# @code system"W 4"; dddd[2018.06.14]; system"W 2"
-/# @code system"W 0"; dddd[2018.06.14]; system"W 2"
+/# @code system"W 4"; dddd[2018.06.08]; system"W 2"
+/# @code system"W 0"; dddd[2018.06.08]; system"W 2"
 
 ddd:{3#days@mod[system["W"]+x-`week$x;7]}
-/# @code system"W 4"; ddd[2018.06.14]; system"W 2"
-/# @code system"W 0"; ddd[2018.06.14]; system"W 2"
+/# @code system"W 4"; ddd[2018.06.08]; system"W 2"
+/# @code system"W 0"; ddd[2018.06.08]; system"W 2"
 
 yyyy:{string`year$x}
-/# @code yyyy[.z.d]
+/# @code yyyy[2018.06.08]
 
 yy:{-2#yyyy@x}
-/# @code yy[.z.d]
+/# @code yy[2018.06.08]
 
 /format:"dd/m/yyyy"
 /tokens:cut[where differ format;format]
