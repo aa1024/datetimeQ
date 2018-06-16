@@ -6,8 +6,8 @@
 \d .dtf
 
 months:string `January`February`March`April`May`June`July`August`September`October`November`December;
-monthsMap:(1+til 12)!months;
-days:`Monday`Tuesday`Wednesday`Thursday`Friday`Saturday`Sunday;
+monthMap:(1+til 12)!months;
+days:string `Sunday`Monday`Tuesday`Wednesday`Thursday`Friday`Saturday;
 split:"/ -,";      /# @bullet Currently supports these 4 separators : "/" , " ", "," & "-"
 
 /To display                                  Use this code
@@ -32,17 +32,29 @@ mm[.z.d]
 mmm:{3#mmmm[x]}
 mmm[.z.d]
 
-mmmm:{monthsMap[`mm$x]}
+mmmm:{monthMap[`mm$x]}
 mmmm[.z.d]
 
 mmmmm:{1#mmmm[x]}
 mmmmm[.z.d]
 
-/x:.z.d
 
+d:{string`int$`dd$x}
+d[.z.d-10]
 
-format:"dd/m/yyyy"
-tokens:cut[where differ format;format]
+dd:{string`dd$x}
+dd[.z.d]
+
+dddd:{days@mod[system["W"]+x-`week$x;7]}
+/system"W 4"; dddd[2018.06.14]; system"W 2"
+/system"W 0"; dddd[2018.06.14]; system"W 2"
+
+ddd:{3#days@mod[system["W"]+x-`week$x;7]}
+/system"W 4"; ddd[2018.06.14]; system"W 2"
+/system"W 0"; ddd[2018.06.14]; system"W 2"
+
+/format:"dd/m/yyyy"
+/tokens:cut[where differ format;format]
 
 
 
