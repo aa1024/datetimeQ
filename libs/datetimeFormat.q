@@ -53,6 +53,11 @@ ddd:{3#days@mod[system["W"]+x-`week$x;7]}
 /# @code system"W 4"; ddd[2018.06.14]; system"W 2"
 /# @code system"W 0"; ddd[2018.06.14]; system"W 2"
 
+yyyy:{string`year$x}
+/# @code yyyy[.z.d]
+
+yy:{-2#yyyy@x}
+/# @code yy[.z.d]
 
 /format:"dd/m/yyyy"
 /tokens:cut[where differ format;format]
