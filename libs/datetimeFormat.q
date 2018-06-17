@@ -26,7 +26,21 @@ nop:{'"error"}
 /Years as 1900-9999                          yyyy
 
 
+/# @function format Format the date as per the given date format 
+/#    @param f Date formatter e.g. "dd-mm-yyyy"   
+/#    @param dt Date to be formatted   
+/#    @return Formatted date
+format:{[f;dt]
+    vf:lower[f] inter  .Q.a;
+    it:except[`$cut[where differ vf;vf];key excelMap];
+    if[count it;'"Unrecognized char passed for formatting"];
+    tkns:cut[where differ f;f];
+    raze {[op;dt]@[value `nop^excelMap@`$op;dt;op] }[;dt] each tkns
+ }
 
+/# @code q)format["d/m/yyyy"; 2018.06.08] 
+/# @code q)format["d mmmm, dddd ,yyyy"; 2018.06.18]
+/# @code q)format["yy-mm-dd"; 2018.06.08]
 
 
 /# @function m Returns Months as 1-12 
