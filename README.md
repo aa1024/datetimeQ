@@ -7,7 +7,7 @@ The following taken has been taken from [excel format](https://support.office.co
 
 Please check out the wiki pages for functions and examples.
 
-To display                                  | Use this code
+**To display**                              | **Use this code**
 ---                                         | ---
 Months as 1-12                              | m
 Months as 01-12                             | mm
