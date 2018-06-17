@@ -7,7 +7,8 @@ Collection of q functions for :
 Currently it supports the excel way of formatting the dates.
 The following taken has been taken from [excel format](https://support.office.com/en-us/article/format-a-date-the-way-you-want-8e10019e-d5d8-47a1-ba95-db95123d273e)
 
-Please check out the wiki pages for functions and examples.
+Please check out the [wiki page](https://github.com/aa1024/datetimeQ/wiki/) for supported functions and examples.
+
 
 **To display**                              | **Use this code**
 ---                                         | ---
