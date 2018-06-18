@@ -9,7 +9,7 @@ months:string `January`February`March`April`May`June`July`August`September`Octob
 monthMap:(1+til 12)!months;
 days:string `Sunday`Monday`Tuesday`Wednesday`Thursday`Friday`Saturday;
 /split:"/ -,";      / @bullet Currently supports these 4 separators : "/" , " ", "," & "-"
-excelMap:`m`mm`mmm`mmmm`d`dd`ddd`dddd`yy`yyyy!`m`mm`mmm`mmmm`d`dd`ddd`dddd`yy`yyyy;
+excelMap:`m`mm`mmm`mmmm`d`dd`ddd`dddd`yy`yyyy`h`hh`H`HH`u`uu`s`ss`o`oo`O`OO`0`00`000!`m`mm`mmm`mmmm`d`dd`ddd`dddd`yy`yyyy`h`hh`h1`hh1`u`uu`s`ss1`ap`ampm`ap0`ampm0`ms1`ms2`ms3;
 nop:{'"error"}
 
 /To display                                  Use this code
@@ -26,13 +26,20 @@ nop:{'"error"}
 /Years as 1900-9999                          yyyy
 
 
+
 /# @function format Format the date as per the given date format 
 /#    @param f Date formatter e.g. "dd-mm-yyyy"   
 /#    @param dt Date to be formatted   
 /#    @return Formatted date
-format:{[f;dt]
-    vf:lower[f] inter  .Q.a;
+
+apList:(("AM/PM";"OO");("A/P";"O");("am/pm";"oo");("a/p";"o"))
+
+format:{[fmt;dt]
+    f:fmt;
+    if[a:any oi:f like/:("*AM/PM*";"*A/P*";"*am/pm*";"*a/p*"); f:{ssr[x; y 0; y 1]}[f ] apList first where oi; f:ssr[f;"h";"H"]];
+    vf:lower[f] inter  .Q.a; /,"0";
     it:except[`$cut[where differ vf;vf];key excelMap];
+    
     if[count it;'"Unrecognized char passed for formatting"];
     tkns:cut[where differ f;f];
     raze {[op;dt]@[value `nop^excelMap@`$op;dt;op] }[;dt] each tkns
@@ -40,12 +47,13 @@ format:{[f;dt]
 
 /# @code q)format["d/m/yyyy"; 2018.06.08] 
 /# @code q)format["d mmmm, dddd ,yyyy"; 2018.06.18]
-/# @code q)format["yy-mm-dd"; 2018.06.08]
+/# @code q)format[f:"yy-mm-dd hh:uu:ss.000"; 2018.06.08T01:02:03.456]
+/# @code q)do[1000;format[fmt:"yy-mm-dd hh:uu:ss.000 AM/PM"; dt:2018.06.08T21:02:03.456]]
 
 
 /# @function m Returns Months as 1-12 
 /#    @param x Date to be formatted   
-/#    @return month 
+/#    @return PMnth 
 m:{string`int$`mm$x}
 /# @code q)m[2018.06.08]
 
@@ -113,5 +121,8 @@ yyyy:{string`year$x}
 /#    @return year 
 yy:{-2#yyyy@x}
 /# @code q)yy[2018.06.08]
+
+
+
 
 
