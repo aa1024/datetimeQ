@@ -57,7 +57,7 @@ format:{[fmt;dt]
     raze {[op;dt]@[value `nop^excelMap@`$op;dt;op] }[;dt] each tkns
  }
 
-/# @code q)format["d/m/yyyy"; 2018.06.08] 
+/# @code q)format[fmt:"d/m/yyyy"; dt:2018.06.08] 
 /# @code q)format["d mmmm, dddd ,yyyy"; 2018.06.18]
 /# @code q)format[f:"yy-mm-dd hh:uu:ss.000"; 2018.06.08T01:02:03.456]
 /# @code q)do[1000;format[fmt:"yy-mm-dd hh:uu:ss.000 AM/PM"; dt:2018.06.08T21:02:03.456]]
