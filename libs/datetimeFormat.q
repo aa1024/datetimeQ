@@ -24,16 +24,17 @@ nop:{'"error"}
 /Days as Sunday-Saturday                     dddd
 /Years as 00-99                              yy
 /Years as 1900-9999                          yyyy
-/Hours as 0–23                               h
-/Hours as 00–23                              hh
-/Minutes as 0–59                             m
-/Minutes as 00–59                            mm
-/Seconds as 0–59                             s
-/Seconds as 00–59                            ss  
+/Hours as 0-23                               h
+/Hours as 00-23                              hh
+/Minutes as 0-59                             m
+/Minutes as 00-59                            mm
+/Seconds as 0-59                             s
+/Seconds as 00-59                            ss  
 /Time as 4 AM                                h AM/PM
 /Time as 4:36 PM                             h:mm AM/PM
 /Time as 4:36:03 P                           h:mm:ss A/P
 /Time as 4:36:03.75                          h:mm:ss.00
+
 	
 
 
@@ -133,6 +134,55 @@ yyyy:{string`year$x}
 yy:{-2#yyyy@x}
 /# @code q)yy[2018.06.08]
 
+
+h:{`hh$x}
+/# @code q)h 01:05:21
+
+hh:{"0"^-2$string h@x}
+/# @code q)hh 01:05:21
+
+h1:{mod[`hh$x;12]}
+/# @code q)h1 01:05:21
+/# @code q)h1 21:05:21
+
+hh1:{"0"^-2$string h1[x]}
+/# @code q)hh1 01:05:21
+/# @code q)hh1 21:05:21
+
+
+u:{`uu$x}
+/# @code q)u x:21:05:21.123
+
+uu:{"0"^-2$string`uu$x}
+/# @code q)uu 01:05:21
+
+
+s:{`ss$x}
+/# @code q)s x:01:05:21
+
+ss1:{"0"^-2$string`ss$x}
+/# @code q)ss1 01:05:21
+
+ampm0:{ $[<[`hh$x;12] ; "AM";"PM"] }
+/# @code q)ampm0[21:05:21]
+
+ap0:{1#ampm0@x}
+/# @code q)ap0[21:05:21]
+
+ampm:{lower ampm0@x}
+/# @code q)ampm[21:05:21]
+
+ap:{lower 1#ampm0@x}
+/# @code q)ap[21:05:21]
+
+ms3:{3$string mod[`int$`time$x;1000]}
+/# @code q)ms3[x:21:05:21.123]
+
+ms2:{2$string mod[`int$`time$x;1000]}
+/# @code q)ms2[x:21:05:21.123]
+
+ms1:{1$string mod[`int$`time$x;1000]}
+/# @code q)ms1[x:21:05:21.123]
 
 
 
