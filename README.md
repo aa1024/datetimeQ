@@ -4,7 +4,7 @@ Collection of q functions for :
 * datetime formatting (mostly excel) 
 ````
 q)format["yy-mm-dd hh:uu:ss.000"; 2018.06.08T01:02:03.456]  
-"18-06-08 21:02:03.456"`
+"18-06-08 21:02:03.456"
 ````
 
 * ~~datetime helper functions~~
