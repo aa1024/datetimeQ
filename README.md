@@ -1,10 +1,10 @@
 # datetimeQ
 
 Collection of q functions for :
-* datetime  
-* excel formatting  
+* datetime formatting (mostly excel) 
 
-Currently it supports the excel way of formatting the dates.
+Currently it supports the excel way of formatting the dates (except the minutes, it is supported as kdb `minute` (`type u`) )
+
 The following table taken has been taken from [excel support](https://support.office.com/en-us/article/create-or-delete-a-custom-number-format-78f2a361-936b-4c03-8772-09fab54be7f4#bm1)
 
 Please check out the [wiki page](https://github.com/aa1024/datetimeQ/wiki/) for supported functions and examples.
