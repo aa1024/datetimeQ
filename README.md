@@ -2,6 +2,7 @@
 
 Collection of q functions for :
 * datetime formatting (mostly excel) 
+* ~~datetime helper functions 
 
 Currently it supports the excel way of formatting the dates (except the minutes, it is supported as kdb `minute` (`type u`) )
 
