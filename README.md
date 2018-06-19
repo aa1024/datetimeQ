@@ -9,6 +9,8 @@ q).dtf.format["yy-mm-dd hh:uu:ss.000"; 2018.06.08T01:02:03.456]
 
 * ~~datetime helper functions~~
 
+# Format Supported 
+
 Currently it supports the excel way of formatting the dates (except the minutes, it is supported as kdb `minute` (`type u`) )
 
 The following table taken has been taken from [excel support](https://support.office.com/en-us/article/create-or-delete-a-custom-number-format-78f2a361-936b-4c03-8772-09fab54be7f4#bm1)
