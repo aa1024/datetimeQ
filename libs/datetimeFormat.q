@@ -36,15 +36,12 @@ nop:{'"error"}
 /Time as 4:36:03.75                          h:mm:ss.00
 
 	
-
-
-
 /# @function format Format the date as per the given date format 
 /#    @param f Date formatter e.g. "dd-mm-yyyy"   
 /#    @param dt Date to be formatted   
 /#    @return Formatted date
 
-apList:(("AM/PM";"OO");("A/P";"O");("am/pm";"oo");("a/p";"o"))
+apList:(("AM/PM";"OO");("A/P";"O");("am/pm";"oo");("a/p";"o"));
 
 format:{[fmt;dt]
     f:fmt;
@@ -106,7 +103,7 @@ d:{string`int$`dd$x}
 dd:{"0"^-2$string`dd$x}
 /# @code q)dd[2018.06.08]
 
-/# @function ddddd Days as Sunday-Saturday 
+/# @function ddddd To get Days as Sunday-Saturday 
 /#    @param x Date to be formatted   
 /#    @return Day of the week 
 dddd:{days@mod[system["W"]+x-`week$x;7]}
@@ -114,7 +111,7 @@ dddd:{days@mod[system["W"]+x-`week$x;7]}
 /# @code q)system"W 0"; dddd[2018.06.08]; system"W 2"
 
 
-/# @function ddddd Returns Returns Days as Sun-Sat 
+/# @function ddddd To get Days as Sun-Sat 
 /#    @param x Date to be formatted   
 /#    @return Day of the week 
 ddd:{3#days@mod[system["W"]+x-`week$x;7]}
@@ -122,65 +119,110 @@ ddd:{3#days@mod[system["W"]+x-`week$x;7]}
 /# @code q)system"W 0"; ddd[2018.06.08]; system"W 2"
 
 
-/# @function m Returns Years as 1900-2099 
+/# @function m To get Years as 1900-2099 
 /#    @param x Date to be formatted   
 /#    @return year 
 yyyy:{string`year$x}
 /# @code q)yyyy[2018.06.08]
 
-/# @function m Returns Years as 00-99 
+/# @function m To get Years as 00-99 
 /#    @param x Date to be formatted   
 /#    @return year 
 yy:{-2#yyyy@x}
 /# @code q)yy[2018.06.08]
 
 
+/# @function h To get Hours as 0-23 
+/#    @param x Date to be formatted   
+/#    @return Hours 
 h:{`hh$x}
 /# @code q)h 01:05:21
 
+/# @function hh To get Hours as 00-23 
+/#    @param x Date to be formatted   
+/#    @return Hours 
 hh:{"0"^-2$string h@x}
 /# @code q)hh 01:05:21
 
+/# @function h1 To get Hours as 1-12 
+/#    @param x Date to be formatted   
+/#    @return Hours 
 h1:{mod[`hh$x;12]}
 /# @code q)h1 01:05:21
 /# @code q)h1 21:05:21
 
+/# @function hh1 To get Hours as 01-12 
+/#    @param x Date to be formatted   
+/#    @return Hours 
 hh1:{"0"^-2$string h1[x]}
 /# @code q)hh1 01:05:21
 /# @code q)hh1 21:05:21
 
 
+/# @function u To get Minutes as 0-59 
+/#    @param x Date to be formatted   
+/#    @return Minutes 
 u:{`uu$x}
 /# @code q)u x:21:05:21.123
 
+/# @function uu To get Minutes as 00-59 
+/#    @param x Date to be formatted   
+/#    @return Minutes 
 uu:{"0"^-2$string`uu$x}
 /# @code q)uu 01:05:21
 
 
+/# @function s To get Seconds as 0-59 
+/#    @param x Date to be formatted   
+/#    @return seconds 
 s:{`ss$x}
 /# @code q)s x:01:05:21
 
+/# @function ss1 To get Seconds as 00-59 
+/#    @param x Date to be formatted   
+/#    @return seconds 
 ss1:{"0"^-2$string`ss$x}
 /# @code q)ss1 01:05:21
 
+/# @function ampm0 To get Time as 4 AM 
+/#    @param x Date to be formatted   
+/#    @return AM/PM 
 ampm0:{ $[<[`hh$x;12] ; "AM";"PM"] }
 /# @code q)ampm0[21:05:21]
 
+/# @function ap0 To get Time as 4 A 
+/#    @param x Date to be formatted   
+/#    @return A/P 
 ap0:{1#ampm0@x}
 /# @code q)ap0[21:05:21]
 
+/# @function ampm To get Time as 4 am 
+/#    @param x Date to be formatted   
+/#    @return am/pm
 ampm:{lower ampm0@x}
 /# @code q)ampm[21:05:21]
 
+/# @function ap To get Time as 4 a   (a/p)
+/#    @param x Date to be formatted   
+/#    @return a/p
 ap:{lower 1#ampm0@x}
 /# @code q)ap[21:05:21]
 
+/# @function ms3 To get 3 digits millisecond precision
+/#    @param x Date to be formatted   
+/#    @return milliseconds 
 ms3:{3$string mod[`int$`time$x;1000]}
 /# @code q)ms3[x:21:05:21.123]
 
+/# @function ms2 To get 2 digits millisecond precision 
+/#    @param x Date to be formatted   
+/#    @return milliseconds 
 ms2:{2$string mod[`int$`time$x;1000]}
 /# @code q)ms2[x:21:05:21.123]
 
+/# @function ms1 To get 1 digit millisecond precision
+/#    @param x Date to be formatted   
+/#    @return millisecond 
 ms1:{1$string mod[`int$`time$x;1000]}
 /# @code q)ms1[x:21:05:21.123]
 
