@@ -9,7 +9,7 @@ months:string `January`February`March`April`May`June`July`August`September`Octob
 monthMap:(1+til 12)!months;
 days:string `Sunday`Monday`Tuesday`Wednesday`Thursday`Friday`Saturday;
 /split:"/ -,";      / @bullet Currently supports these 4 separators : "/" , " ", "," & "-"
-excelMap:`m`mm`mmm`mmmm`d`dd`ddd`dddd`yy`yyyy`h`hh`H`HH`u`uu`s`ss`o`oo`O`OO`0`00`000!`m`mm`mmm`mmmm`d`dd`ddd`dddd`yy`yyyy`h`hh`h1`hh1`u`uu`s`ss1`ap`ampm`ap0`ampm0`ms1`ms2`ms3;
+excelMap:`m`mm`mmm`mmmm`d`dd`ddd`dddd`yy`yyyy`h`hh`H`HH`u`uu`s`ss`o`oo`O`OO`0`00`000!`.dtf.m`.dtf.mm`.dtf.mmm`.dtf.mmmm`.dtf.d`.dtf.dd`.dtf.ddd`.dtf.dddd`.dtf.yy`.dtf.yyyy`.dtf.h`.dtf.hh`.dtf.h1`.dtf.hh1`.dtf.u`.dtf.uu`.dtf.s`.dtf.ss1`.dtf.ap`.dtf.ampm`.dtf.ap0`.dtf.ampm0`.dtf.ms1`.dtf.ms2`.dtf.ms3;
 nop:{'"error"}
 
 /To display                                  Use this code
@@ -56,7 +56,7 @@ format:{[fmt;dt]
 
 /# @code q)format[fmt:"d/m/yyyy"; dt:2018.06.08] 
 /# @code q)format["d mmmm, dddd ,yyyy"; 2018.06.18]
-/# @code q).dtf.format[f:"yy-mm-dd hh:uu:ss.000"; 2018.06.08T01:02:03.456]
+/# @code q).dtf.format[fmt:"yy-mm-dd hh:uu:ss.000"; 2018.06.08T01:02:03.456]
 /# @code q)do[1000;format[fmt:"yy-mm-dd hh:uu:ss.000 AM/PM"; dt:2018.06.08T21:02:03.456]]
 
 
