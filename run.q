@@ -10,4 +10,4 @@ import `dtf;
 
 show .dtf.format[fmt:"d/m/yyyy"; dt:2018.06.08];
 show .dtf.format["d mmmm, dddd ,yyyy"; 2018.06.18];
-show .dtf.format[fmt:"yy-mm-dd hh:uu:ss.000"; 2018.06.08T01:02:03.456]
+show .dtf.format[fmt:"yy-mm-dd hh:uu:ss.000"; 2018.06.08T01:02:03.456];
