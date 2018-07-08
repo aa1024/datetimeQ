@@ -51,7 +51,7 @@ format:{[fmt;dt]
     
     if[count it;'"Unrecognized char passed for formatting"];
     tkns:cut[where differ f;f];
-    raze {[op;dt]@[value `nop^excelMap@`$op;dt;op] }[;dt] each tkns
+    raze {[op;dt]@[value `.dtf.nop^excelMap@`$op;dt;op] }[;dt] each tkns
  };
 
 /# @code q).dtf.format[fmt:"d/m/yyyy"; dt:2018.06.08] 
