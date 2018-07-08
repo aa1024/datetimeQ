@@ -5,6 +5,12 @@ Collection of q functions for :
 ````
 q).dtf.format["yy-mm-dd hh:uu:ss.000"; 2018.06.08T01:02:03.456]  
 "18-06-08 21:02:03.456"
+
+q).dtf.format["d mmmm, dddd ,yyyy"; 2018.06.18];
+"18 June, Tuesday ,2018"
+
+q).dtf.format["d/m/yyyy"; 2018.06.08]
+"8/6/2018"
 ````
 
 * ~~datetime helper functions~~
