@@ -11,9 +11,8 @@ q).dtf.format["d mmmm, dddd ,yyyy"; 2018.06.18];
 
 q).dtf.format["d/m/yyyy"; 2018.06.08]
 "8/6/2018"
-````
 
-* ~~datetime helper functions~~
+````
 
 # Format Supported 
 
@@ -47,3 +46,7 @@ Time as 4 AM                                | h AM/PM
 Time as 4:36 PM                             | h:mm AM/PM
 Time as 4:36:03 P                           | h:mm:ss A/P
 Time as 4:36:03.75                          | h:mm:ss.00
+
+# TODO 
+
+* datetime helper functions
