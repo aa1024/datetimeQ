@@ -135,13 +135,13 @@ yy:{-2#yyyy@x}
 /# @function h To get Hours as 0-23 
 /#    @param x Date to be formatted   
 /#    @return Hours 
-h:{`hh$x}
+h:{string `hh$x}
 /# @code q).dtf.h 01:05:21
 
 /# @function hh To get Hours as 00-23 
 /#    @param x Date to be formatted   
 /#    @return Hours 
-hh:{"0"^-2$string h@x}
+hh:{"0"^-2$h@x}
 /# @code q).dtf.hh 01:05:21
 
 /# @function h1 To get Hours as 1-12 
